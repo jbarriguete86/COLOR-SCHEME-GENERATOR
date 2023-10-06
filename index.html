@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Scheme Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <input type="color" id="input-color">
+            <label for="scheme"></label>
+            <select name="color" id="color-scheme">
+                <option value="monochrome">monochrome</option>
+                <option value="monochrome-dark">monochrome-dark</option>
+                <option value="monochrome-light">monochrome-light</option>
+                <option value="analogic">analogic</option>
+                <option value="complement">complement</option>
+                <option value="analogic-complement">analogic-complement</option>
+                <option value="triad">triad</option>
+                <option value="quad">quad</option>
+            </select>
+            <button>Get color scheme</button>
+        </header>
+        <main>
+            <div id="color1" class="colors-cont"></div>
+            <div id="color2" class="colors-cont"></div>
+            <div id="color3" class="colors-cont"></div>
+            <div id="color4" class="colors-cont"></div>
+            <div id="color5" class="colors-cont"></div>
+        </main>
+        <footer>
+            <div class="color-names">
+                <h1 id="name1">#F55A5A</h1>
+            </div>
+            <div class="color-names">
+                <h1 id="name2">#2B283A</h1>
+            </div>
+            <div class="color-names">
+                <h1 id="name3">#FBF3AB</h1>
+            </div>
+            <div class="color-names">
+                <h1 id="name4">#AAD1B6</h1>
+            </div>
+            <div class="color-names">
+                <h1 id="name5">#A626D3</h1>
+            </div>
+        </footer>
+    </div>
+    <div class="drkmode-container">
+       <button id="dark-mode">Dark mode</button>
+      </div>
+
+    <script src="index.js" type="module"></script>
+</body>
+</html>
