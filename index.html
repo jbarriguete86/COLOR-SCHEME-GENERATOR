@@ -14,7 +14,7 @@
         <header>
             <input type="color" id="input-color">
             <label for="scheme"></label>
-            <select name="color" id="color-scheme">
+            <select name="color" id="scheme-option">
                 <option value="monochrome">monochrome</option>
                 <option value="monochrome-dark">monochrome-dark</option>
                 <option value="monochrome-light">monochrome-light</option>
@@ -24,16 +24,16 @@
                 <option value="triad">triad</option>
                 <option value="quad">quad</option>
             </select>
-            <button>Get color scheme</button>
+            <button id="get-scheme">Get color scheme</button>
         </header>
-        <main>
+        <main id="color-stripes">
             <div id="color1" class="colors-cont"></div>
             <div id="color2" class="colors-cont"></div>
             <div id="color3" class="colors-cont"></div>
             <div id="color4" class="colors-cont"></div>
             <div id="color5" class="colors-cont"></div>
         </main>
-        <footer>
+        <footer id="hex-names">
             <div class="color-names">
                 <h1 id="name1">#F55A5A</h1>
             </div>
