@@ -1,6 +1,6 @@
 *,
 *::before,
-*::-webkit-textfield-decoration-container{
+*::after{
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
