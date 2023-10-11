@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
-        <header>
+
+        <header id="header-cont">
             <input type="color" id="input-color">
             <label for="scheme"></label>
             <select name="color" id="scheme-options">
@@ -26,18 +29,21 @@
             </select>
             <button id="get-scheme">Get color scheme</button>
         </header>
+
         <main id="color-stripes">
             <!-- Will be populated with JS -->
-
         </main>
+
         <footer id="hex-names">
             <!-- Will be populated with JS -->
         </footer>
-    </div>
-    <div class="drkmode-container">
-       <button id="dark-mode">Dark mode</button>
-      </div>
 
-        <script src="index.js"></script>
+    </div>
+
+    <div class="drkmode-container">
+        <button id="dark-mode">Dark mode</button>
+    </div>
+
+    <script src="index.js"></script>
 </body>
 </html>

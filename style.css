@@ -31,6 +31,7 @@ body{
 .container{
     height: 550px;
     border: solid black 1px;
+    border-bottom: none;
     flex-direction: column;
 }
 
@@ -42,6 +43,13 @@ button,
 h1{
     font-weight: 500;
     font-size: 12px;
+}
+
+button{
+    width: 20%;
+    background-color: #FFFFFF;
+    border-color: #D1D5DB;
+    text-align: center;
 }
 
 /* HEADER */
@@ -84,15 +92,6 @@ main{
     border: black solid 1px;
 }
 
-#color1{ background-color: aqua; }
-
-#color2{ background-color: green; }   
-
-#color3{ background-color: rgb(11, 126, 126); }
-
-#color4{ background-color: rgb(1, 48, 48); }
-
-#color5{ background-color: rgb(43, 68, 68); }
 
 /* FOOTER */
 footer{
@@ -111,13 +110,33 @@ footer{
 /* DARK MODE  */
 
 .drkmode-container{
-    padding-top: .5em;
+    padding: .5em;
+    
     justify-content: right;
     align-items: center;
+    border: solid 1px black;
+    border-top: none;
 }
 
-#dark-mode{
-    text-align: center;
-    color:azure;
-    background-color:black;
+.dark{
+    background-color: #1F2937;
+}
+
+.dark-btn{
+    background-color: #3D4B60;
+    color: #ffffff;
+
+}
+
+.dark-text{
+   color: #D5D4D8; 
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width:403px){
+    h1,
+    button{
+        font-size: 8px;
+    }
 }
