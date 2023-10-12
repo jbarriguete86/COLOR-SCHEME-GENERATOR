@@ -1,42 +1,46 @@
+const mainHtml = document.getElementById('color-main')
+const colorDiv = document.getElementById('color-stripes')
 const colorInput = document.getElementById('input-color')
 const colorBtn = document.getElementById('get-scheme')
 const schemeEl = document.getElementById("scheme-options")
-const mainHtml = document.getElementById('color-stripes')
-const hexHtml = document.getElementById('hex-names')
 const darkModeBtn= document.getElementById("dark-mode")
 const headerCont = document.getElementById('header-cont')
 const darkMode = document.querySelector('.drkmode-container')
-let colorsName = ["#000000","#1B1B1B","#323232","#514649","#676767"]
+let colorsArray = []
 
 // BUTTON EVENT LISTENERS
 
-colorBtn.addEventListener('click', fillColor)
+colorBtn.addEventListener('click', fetchData)
 
 darkModeBtn.addEventListener("click", ()=>{
     darkModeBtn.innerText = darkModeBtn.innerText ==="Dark mode" ? "Light mode" : "Dark mode"
-    const elements = [headerCont, darkMode, hexHtml, schemeEl, colorBtn, darkModeBtn];
-    
-    for (element of elements){
+    if (darkModeBtn.innerText==="Light mode") {
+            document.body.style.backgroundColor = 'black'
+            document.querySelectorAll('.color-hex').forEach(hex =>{
+                hex.classList.add('dark-text')
+            })} else {
+                document.body.style.backgroundColor = 'white'
+            document.querySelectorAll('.color-hex').forEach(hex =>{
+                hex.classList.remove('dark-text')
+            })
+            }
+    const elements = [headerCont, darkMode, schemeEl, colorBtn, darkModeBtn];
+    elements.map(element =>{
         if (darkModeBtn.innerText==="Light mode") {
-      element.classList.add('dark');
-      if (element === schemeEl || darkModeBtn) {
-        element.classList.add('dark-text');
-      }
-    } else {
-      element.classList.remove('dark');
-      if (element === schemeEl || darkModeBtn) {
-        element.classList.remove('dark-text');
-      }
-    }
-  }
-    for(let i=1; i<=5 ; i++){
-            let colEl = document.getElementById(`name${i}`).innerText
-            colorsName.push(colEl)
+            if(element === headerCont || darkMode){
+            element.classList.add('dark')}
+            if (element === schemeEl || darkModeBtn) {
+            element.classList.add('dark-btn');
+            }
+        } else{
+            element.classList.remove('dark');
+            if (element === schemeEl || darkModeBtn) {
+            element.classList.remove('dark-btn');
+            } 
         }
-        mainHtml.innerHTML =""
-        hexHtml.innerHTML = ""   
-        feedColor() 
-})
+        })
+    })
+ 
 
 document.addEventListener("click", (e)=>{
     const validIds = ["color1", "color2", "color3", "color4", "color5"]
@@ -56,7 +60,7 @@ document.addEventListener("click", (e)=>{
 
 // MAIN FUNCTIONS
 
-function fillColor(){
+function fetchData(){
     let colorValue = colorInput.value.substring(1)
     let schemeValue = schemeEl.value
     fetch(`https://www.thecolorapi.com/scheme?hex=${colorValue}&mode=${schemeValue}&count=5`)
@@ -64,30 +68,22 @@ function fillColor(){
     .then(data => {
         const infArr = data.colors
         for (info of infArr){ 
-           colorsName.push(info.name.closest_named_hex)
+           colorsArray.push(info.name.closest_named_hex)
         }  
-        mainHtml.innerHTML =""
-        hexHtml.innerHTML = ""    
-        feedColor() 
+        mainHtml.innerHTML =""   
+        for(name of colorsArray){
+        let indexColor = colorsArray.indexOf(name)+1
+    mainHtml.innerHTML += `
+    <div class="color-div"><span id="color${indexColor}" class="colors-cont"></span>
+    <p class="color-hex ${darkModeBtn.innerText==="Light mode" ? "dark-text" : ""}">${name}</p>
+    </div>
+    `
+    document.getElementById(`color${indexColor}`).style.backgroundColor = name
+  }
+  colorsArray=[] 
        
    })
 }
 
-function feedColor(){
-    for(name of colorsName){
-        let indexColor = colorsName.indexOf(name)+1
-    mainHtml.innerHTML += `
-    <div id="color${indexColor}" class="colors-cont">
-    </div>
-    `
-    document.getElementById(`color${indexColor}`).style.backgroundColor = name
-    hexHtml.innerHTML += `
-    <div class="color-names">
-        <h1 id="name${indexColor}" class="${darkModeBtn.innerText==="Light mode" ? "dark-text" : ""}">${name}</h1>
-    </div>` 
-  }
-  colorsName=[]
-}
-
 // INITIAL FUNCTION CALL TO POPULATE THE APP
-feedColor()
+fetchData()
