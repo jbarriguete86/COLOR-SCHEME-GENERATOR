@@ -42,20 +42,19 @@ darkModeBtn.addEventListener("click", ()=>{
     })
  
 
-document.addEventListener("click", (e)=>{
-    const validIds = ["color1", "color2", "color3", "color4", "color5"]
-    
-  if (validIds.includes(e.target.id)) {
-      e.target.style.cursor ='wait'
-      setTimeout(()=>{
-        let colorHex = document.getElementById(`name${e.target.id.slice(5,6)}`) 
-        let realColor = colorHex.innerText
-        navigator.clipboard.writeText(realColor)
-        e.target.style.cursor ='default'
-      },100)
-      
-  }
-})
+    document.addEventListener("click", (e)=>{
+        const validIds = ["color1", "color2", "color3", "color4", "color5"]
+        
+      if (validIds.includes(e.target.id)) {
+          e.target.style.cursor ='wait'
+          setTimeout(()=>{
+            let colorHex = document.getElementById(`hex${e.target.id.slice(5,6)}`) 
+            let realColor = colorHex.innerText
+            navigator.clipboard.writeText(realColor)
+            e.target.style.cursor ='pointer'
+          },100)
+      }
+    })
 
 
 // MAIN FUNCTIONS
@@ -74,8 +73,8 @@ function fetchData(){
         for(name of colorsArray){
         let indexColor = colorsArray.indexOf(name)+1
     mainHtml.innerHTML += `
-    <div class="color-div"><span id="color${indexColor}" class="colors-cont"></span>
-    <p class="color-hex ${darkModeBtn.innerText==="Light mode" ? "dark-text" : ""}">${name}</p>
+    <div id="color-div${indexColor}" class="color-div"><span id="color${indexColor}" class="colors-cont"></span>
+    <p  id="hex${indexColor}"class="color-hex ${darkModeBtn.innerText==="Light mode" ? "dark-text" : ""}">${name}</p>
     </div>
     `
     document.getElementById(`color${indexColor}`).style.backgroundColor = name
